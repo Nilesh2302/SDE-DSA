@@ -1,13 +1,17 @@
 class Solution:
     #Function to return list containing elements of right view of binary tree.
     def rec(self,root,level,res):
+        # it help to backtrack when both left and rightside are none
         if not root:
             return
-        
+      
         if len(res) == level:
             res.append(root.data)
-        
+            
+        #moving right increase level
         self.rec(root.right,level+1,res)
+        
+        #moving left increase level
         self.rec(root.left,level+1,res)
     def rightView(self,root):
         res = []
