@@ -1,0 +1,80 @@
+#User function Template for python3
+from collections import defaultdict
+
+class Solution:
+    def bottomView(self, root):
+        if not root:
+            return
+        
+        queue =[(root,0)]
+        line_map = defaultdict(int)
+        
+        while queue:
+            node,line = queue.pop(0)
+
+            line_map[line] = node.data
+            
+            if node.left:
+                queue.append((node.left,line-1))
+
+            if node.right:
+                queue.append((node.right,line+1))
+        
+        sorted_map = sorted(line_map.items(),key=lambda x: x[0])
+    
+        return [val for line,val in sorted_map]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#User function Template for python3
+from collections import defaultdict
+
+class Solution:
+    def bottomView(self, root):
+        if not root:
+            return
+        
+        #create a queue for storing pairs(node,line)
+        queue =[(root,0)]
+        
+        # create a map for storing pairs(line,node)
+        line_map = defaultdict(int)
+        
+        while queue:
+            #just poping and assigning
+            node,line = queue.pop(0)
+            
+            #update the map with just line->node
+            line_map[line] = node.data
+            
+            # store the left child and its line number in queue
+            if node.left:
+                queue.append((node.left,line-1))
+                
+            # store the left child and its line number in queue
+            if node.right:
+                queue.append((node.right,line+1))
+        
+        # sort the map by line number
+        sorted_map = sorted(line_map.items(),key=lambda x: x[0])
+        
+        #just returing the bottom view of the tree
+        return [val for line,val in sorted_map]
+            
+                
+            
+            
