@@ -1,0 +1,25 @@
+class Solution:
+    def verticalOrder(self, root): 
+        #Your code here
+        d = {}
+        q = deque()
+        q.append((root, 0))
+
+        while q:
+            node,dist = q.popleft()
+            d.setdefault(dist, []).append(node.data)
+            if node.left:
+                q.append((node.left, dist - 1))
+            if node.right:
+                q.append((node.right, dist + 1))
+                
+        m=[]
+        for key in sorted(d.keys()):
+            m.append(d[key])
+        
+        t = []
+        for i in m:
+            for j in i:
+                t.append(j)
+        
+        return t
