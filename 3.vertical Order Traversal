@@ -12,11 +12,13 @@ class Solution:
                 q.append((node.left, dist - 1))
             if node.right:
                 q.append((node.right, dist + 1))
-                
+        
+        #appending only values
         m=[]
         for key in sorted(d.keys()):
             m.append(d[key])
         
+        #for removing outer brackets [[]] to []
         t = []
         for i in m:
             for j in i:
