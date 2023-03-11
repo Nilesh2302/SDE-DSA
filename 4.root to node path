@@ -12,9 +12,11 @@ class Solution:
         if root.val == x:
             return True
         
+        #if any one of True then return True
         if self.getPath(root.left,arr,x) or self.getPath(root.right,arr,x):
             return True
         
+        #pop because we check both left and right of that node and no path found so poo it
         arr.pop()
         return False             
     def solve(self, A, B):
