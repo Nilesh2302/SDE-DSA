@@ -1,0 +1,26 @@
+
+class Solution:
+    # @param A : root node of tree
+    # @param B : integer
+    # @return a list of integers
+    def getPath(self,root,arr,x):
+        if not root:
+            return False
+        
+        arr.append(root.val)
+        
+        if root.val == x:
+            return True
+        
+        if self.getPath(root.left,arr,x) or self.getPath(root.right,arr,x):
+            return True
+        
+        arr.pop()
+        return False             
+    def solve(self, A, B):
+        arr = []
+        if A==None:
+            return arr
+        
+        self.getPath(A,arr,B)
+        return arr
