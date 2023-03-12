@@ -1,0 +1,22 @@
+
+#approch 1: brute force
+class Solution:
+    
+    #Function to return the diameter of a Binary Tree.
+    def diameter(self,root):
+        self.max_h = 0
+        def h(root):
+            if not root:
+                return 0
+            
+            lh = h(root.left)
+            rh = h(root.right)
+            #for choosing the maximum height
+            self.max_h = max(self.max_h,lh+rh)
+            #for moving left or right
+            return 1+max(lh,rh)
+        
+        h(root)
+        return 1+self.max_h
+        
+ #approch 2: optmize
