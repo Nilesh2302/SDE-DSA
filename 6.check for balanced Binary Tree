@@ -1,0 +1,27 @@
+approch 1:O(n^2) time using level order traversal
+
+
+approch 2: O(N) time
+
+
+class Solution:
+    def isBalanced(self, root):
+        return self.dfsHeight(root) != -1
+
+    def dfsHeight(self, root):
+        if root is None:
+            return 0
+
+        leftHeight = self.dfsHeight(root.left)
+        if leftHeight == -1:
+            return -1
+
+        rightHeight = self.dfsHeight(root.right)
+        if rightHeight == -1:
+            return -1
+
+        if abs(leftHeight - rightHeight) > 1:
+            return -1
+           
+        #taking max of eft height and right height   
+        return max(leftHeight, rightHeight) + 1
