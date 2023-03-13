@@ -14,3 +14,16 @@ class Solution:
         res = []
         self.rec(root,0,res)
         return len(res)
+
+
+
+Approch 2:
+class Solution:
+    def maxDepth(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+        
+        lh = self.maxDepth(root.left)
+        rh = self.maxDepth(root.right)
+        
+        return 1 + max(lh, rh)
