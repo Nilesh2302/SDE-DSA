@@ -1,0 +1,17 @@
+class Solution:
+    # Function to return the lowest common ancestor in a Binary Tree.
+    def lca(self, root, n1, n2):
+        if root is None:
+            return root
+        if root.data ==n1 or root.data==n2:
+            return root
+        l=self.lca(root.left,n1,n2)
+        r=self.lca(root.right,n1,n2)
+
+        if l and r:
+            return root
+        else:
+            return l or r
+       
+
+
