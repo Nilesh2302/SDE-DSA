@@ -1,0 +1,20 @@
+
+class Solution:
+    #Function to return maximum path sum from any node in a tree.
+    def findMaxSum(self, root): 
+        res = [root.data]
+        def mpath(root):
+            if not root:
+                return 0
+            
+            leftmax = mpath(root.left)
+            rightmax = mpath(root.right)
+            leftmax = max(leftmax,0)
+            rightmax = max(rightmax,0)
+            
+            res[0] = max(res[0],root.data+leftmax+rightmax)
+            
+            return root.data+max(leftmax,rightmax)
+        
+        mpath(root)
+        return res[0]
