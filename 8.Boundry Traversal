@@ -1,0 +1,51 @@
+class Solution:
+    def lv(self, root, res):
+        if root:
+            if root.left:                         #just left-right
+                res.append(root.data)
+                self.lv(root.left, res)
+            elif root.right:
+                res.append(root.data)
+                self.lv(root.right, res)
+
+    def rv(self, root, res):
+        if root:
+            if root.right:                          #just right - left
+                self.rv(root.right, res)
+                res.append(root.data)
+            elif root.left:
+                self.rv(root.left, res)
+                res.append(root.data)
+
+    def l(self, root, leaves):
+        if not root:
+            return 
+
+        if not root.left and not root.right:
+            leaves.append(root.data)
+            return
+
+        if root.left:
+            self.l(root.left, leaves)
+
+        if root.right:
+            self.l(root.right, leaves)
+
+    def printBoundaryView(self, root):
+        if not root:
+            return []
+
+        res = [root.data]
+
+        if root.left:
+            self.lv(root.left, res)
+  
+        if root.left or root.right:                            #for when there is only root 
+            leaves = []
+            self.l(root, leaves)
+            res.extend(leaves)
+
+        if root.right:
+            self.rv(root.right, res)
+
+        return res
