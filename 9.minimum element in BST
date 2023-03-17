@@ -1,0 +1,9 @@
+def minValue(root):
+    if root is None:
+        return -1
+    
+    curr = root
+    while curr.left:
+        curr = curr.left
+    
+    return curr.data
