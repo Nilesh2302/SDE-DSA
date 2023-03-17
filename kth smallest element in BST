@@ -1,0 +1,31 @@
+#User function Template for python3
+
+'''
+class Node:
+    def __init__(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
+'''
+
+class Solution:
+    # Return the Kth smallest element in the given BST 
+    def KthSmallestElement(self, root, k): 
+        #code here.
+        self.cnt=0
+        self.ans=-1
+        def inorder(root,k):
+            if not root:
+                return
+            inorder(root.left,k)
+            self.cnt += 1
+          
+            if self.cnt == k:
+                self.ans = root.data
+          
+            inorder(root.right,k)
+       
+        inorder(root,k)
+        return self.ans
+        
+            
