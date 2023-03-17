@@ -1,0 +1,20 @@
+def insert(root, key):
+    if root is None:
+        root.data = key
+    
+    if key<root.data:
+        if root.left is None:
+            root.left = Node(key)
+        
+        else:
+            insert(root.left,key)
+            
+    elif key>root.data:
+        if root.right is None:
+            root.right = Node(key)
+        
+        else:
+            insert(root.right,key)
+    
+    else:   #for equal ro condition
+        return root
