@@ -1,0 +1,17 @@
+class Solution:
+    def findCeil(self,root, inp):
+        curr = root
+        ceil = -1
+        while curr:
+            if inp == curr.key:
+                ceil =  curr.key
+                return ceil
+            
+            elif inp<curr.key:
+                ceil = curr.key
+                curr = curr.left
+            
+            else:
+                curr = curr.right
+        
+        return ceil    
