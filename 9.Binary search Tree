@@ -1,0 +1,13 @@
+#those are newly connected those are written
+
+class Solution:
+    def isBSTTraversal(self, n):
+        # Code here
+        max = n[0]
+        for i in range(1,len(n)):
+            if max>=n[i]:
+                return False
+            max = n[i]
+        
+        return True    
+            
