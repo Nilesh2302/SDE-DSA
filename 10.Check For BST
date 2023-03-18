@@ -1,0 +1,14 @@
+class Solution:
+    
+    #Function to check whether a Binary Tree is BST or not.
+    def isBST(self, root):
+        def check(root,mini,maxi):
+            if not root:
+                return True
+                
+            if mini>root.data or maxi<root.data:
+                return False
+            
+            return check(root.left,mini,root.data-1) and check(root.right,root.data+1,maxi)
+         
+        return check(root,1,100000)  
