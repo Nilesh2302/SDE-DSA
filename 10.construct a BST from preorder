@@ -1,0 +1,27 @@
+def insert(root,val):
+    if root.data==0:   #bz 0 means root is None in this case
+        root.data = val
+    
+    elif val<root.data:    
+        if root.left is None:
+            root.left = Node(val)
+        
+        else:
+            insert(root.left,val)
+    
+    else:
+        if root.right is None:
+            root.right = Node(val)
+            
+        else:
+            insert(root.right,val)
+            
+    return root
+        
+def post_order(pre, size) -> Node:
+    #code here
+    root = Node()
+    for i in pre:
+        root = insert(root,i)
+        
+    return root
