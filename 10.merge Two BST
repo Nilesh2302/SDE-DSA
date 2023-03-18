@@ -1,0 +1,17 @@
+def insert(root,l):
+    if root:
+        insert(root.left,l)
+        l.append(root.data)
+        insert(root.right,l)
+    
+    return l
+class Solution:
+    
+    #Function to return a list of integers denoting the node 
+    #values of both the BST in a sorted order.
+    def merge(self, root1, root2):
+        l1 = []
+        l2 = []
+        insert(root1,l1)
+        insert(root2,l2)
+        return sorted(l1+l2)
