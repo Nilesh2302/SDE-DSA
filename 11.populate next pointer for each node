@@ -20,3 +20,27 @@ class Solution:
                     queue.append(node.right)
         
         return root
+
+
+
+approch 2 : using DFS t.c is O(n) and s.c. is O(1)                ... for more reference watch neetcode youtube channel
+class Solution:
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        if root:
+            curr,nxt = root,root.left
+        
+        else:
+            return None
+        
+        while curr and nxt:   
+            curr.left.next = curr.right
+            
+            if curr.next:     #true when they are already connected
+                curr.right.next = curr.next.left
+            
+            curr = curr.next            #moving to next curr at same level
+            if not curr:                #this is for end up level
+                curr = nxt
+                nxt = curr.left
+        
+        return root
