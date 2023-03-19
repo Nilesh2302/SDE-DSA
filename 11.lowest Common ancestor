@@ -1,0 +1,12 @@
+def LCA(root, n1, n2):
+    #code here.
+    curr = root
+    while curr:
+        if n1 > curr.data and n2 > curr.data:
+            curr = curr.right
+        
+        elif n1 < curr.data and n2 < curr.data:
+            curr = curr.left
+        
+        else:
+            return curr
