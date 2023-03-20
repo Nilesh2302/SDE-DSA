@@ -1,0 +1,23 @@
+#GFG
+class Solution:
+    def isPairPresent(self,root, target):
+        if not root:
+            return []
+        
+        stack = []
+        res = set()
+        while True:
+            if root:
+                stack.append(root)
+                root = root.left
+            
+            elif stack:
+                temp=stack.pop()
+                if (target -temp.data) in res:
+                    return 1
+                res.add(temp.data)
+                root = temp.right
+            
+            else:
+                break
+        return 0
