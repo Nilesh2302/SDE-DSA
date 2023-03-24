@@ -1,0 +1,49 @@
+#leetcode
+#app 1: t.c. and s.c  exponential 
+
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        def path(i,j,m,n):
+            if i==m-1 and j==n-1:
+                return 1
+            
+            if i>=m-1 or j>=n-1:
+                return 1
+            
+            else:
+                return path(i+1,j,m,n)+path(i,j+1,m,n)
+    
+        return path(0,0,m,n)
+        
+  #app2 : t.c and s.c. is quadratic
+  class Solution:
+    def path(self,i,j,m,n, dp):
+            if i==m-1 and j==n-1:
+                return 1
+            
+            if i>=m or j>=n:
+                return 0
+
+            if dp[i][j]!=-1:
+                return dp[i][j]
+            else:
+                dp[i][j] = self.path(i+1,j,m,n,dp) + self.path(i,j+1,m,n,dp)
+                return dp[i][j]
+
+    def uniquePaths(self, m: int, n: int) -> int:
+        dp = [[-1 for _ in range(n)] for _ in range(m)]
+        # dp[1][1]=1;
+        num = self.path(0, 0, m, n, dp)
+        return num
+        
+  
+  #app3 : t.c. is O(N) and s.c is 1
+  class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        N = n+m-2
+        r = m-1
+        res = 1
+        for i in range(1,r+1):
+            res = res * (N-r+i)/i
+        
+        return int(res)
