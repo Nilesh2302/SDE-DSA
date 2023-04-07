@@ -1,0 +1,36 @@
+class Solution:
+	def subsetSums(self, arr, N):
+		ans= []
+		def subset_helper(ind,sumi):
+		    if ind==N:
+		        ans.append(sumi)
+		        return
+		    
+		    subset_helper(ind+1,sumi+arr[ind])   
+		    subset_helper(ind+1,sumi)
+		    
+		subset_helper(0,0)
+		ans.sort()
+		return ans
+    
+    
+ #explanation
+class Solution:
+	def subsetSums(self, arr, N):
+		# code here
+		ans= []
+		def subset_helper(ind,sumi):
+		    #when ptr is exceeds
+		    if ind==N:
+		        ans.append(sumi)
+		        return
+		    
+		    #if element is picked
+		    subset_helper(ind+1,sumi+arr[ind])
+		    
+		    #if element is not picked
+		    subset_helper(ind+1,sumi)
+		    
+		subset_helper(0,0)
+		ans.sort()
+		return ans
